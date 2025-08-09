@@ -7,584 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(53, 183, 255, 0.2);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2rem;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-svg {
-            height: 40px;
-            width: 40px;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #35b7ff;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #35b7ff;
-        }
-
-        .nav-dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(53, 183, 255, 0.2);
-            border-radius: 12px;
-            padding: 1rem;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .nav-dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li {
-            margin-bottom: 0.5rem;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #35b7ff;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-
-        .hero-presentation {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-        }
-
-        .hero-cta-overlay {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero-buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #35b7ff, #74f05a);
-            color: #000000;
-        }
-
-        .btn-secondary {
-            background: #74f05a;
-            color: #000000;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #35b7ff;
-            color: #35b7ff;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(53, 183, 255, 0.3);
-        }
-
-        /* Sections */
-        .whitepaper-section {
-            position: relative;
-            padding: 6rem 0;
-            overflow: hidden;
-        }
-
-        .section-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-        }
-
-        .section-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #35b7ff, #74f05a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .whitepaper-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .whitepaper-content h3 {
-            color: #35b7ff;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 3rem 0 1.5rem 0;
-        }
-
-        .whitepaper-content h4 {
-            color: #74f05a;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .whitepaper-content p {
-            margin-bottom: 1.5rem;
-            color: #e0e0e0;
-        }
-
-        .whitepaper-content ul, .whitepaper-content ol {
-            margin: 1.5rem 0;
-            padding-left: 2rem;
-        }
-
-        .whitepaper-content li {
-            margin-bottom: 0.5rem;
-            color: #e0e0e0;
-        }
-
-        .whitepaper-content strong {
-            color: #ffffff;
-        }
-
-        .whitepaper-content code {
-            background: rgba(53, 183, 255, 0.1);
-            border: 1px solid rgba(53, 183, 255, 0.3);
-            padding: 0.2rem 0.5rem;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            color: #35b7ff;
-        }
-
-        .code-block {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(53, 183, 255, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            overflow-x: auto;
-        }
-
-        .code-block pre {
-            color: #e0e0e0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Architecture Diagrams */
-        .architecture-diagram {
-            text-align: center;
-            margin: 3rem 0;
-        }
-
-        .arch-image, .oracle-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid rgba(53, 183, 255, 0.3);
-        }
-
-        /* Brand Assets */
-        .brand-assets-section {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, rgba(53, 183, 255, 0.1), rgba(116, 240, 90, 0.1));
-        }
-
-        .brand-subsection {
-            margin: 4rem 0;
-        }
-
-        .brand-subsection h3 {
-            color: #35b7ff;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .color-card {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(53, 183, 255, 0.3);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .color-preview {
-            height: 80px;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .pax-blue { background: #35b7ff; }
-        .pax-neon { background: #74f05a; }
-        .pax-dark { background: #000000; }
-        .pax-gray { background: #828184; }
-
-        .color-info h4 {
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .color-hex, .color-rgb, .color-usage {
-            display: block;
-            font-size: 0.9rem;
-            color: #e0e0e0;
-            margin-bottom: 0.25rem;
-        }
-
-        .logo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .logo-card {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(53, 183, 255, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .logo-showcase {
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 120px;
-        }
-
-        .dark-bg { background: #000000; }
-        .light-bg { background: #ffffff; }
-
-        .brand-logo {
-            max-height: 80px;
-            max-width: 200px;
-        }
-
-        .logo-details {
-            padding: 1.5rem;
-            border-top: 1px solid rgba(53, 183, 255, 0.3);
-        }
-
-        .logo-details h4 {
-            color: #35b7ff;
-            margin-bottom: 0.5rem;
-        }
-
-        .logo-specs {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            margin-top: 1rem;
-        }
-
-        .logo-specs span {
-            font-size: 0.85rem;
-            color: #e0e0e0;
-        }
-
-        /* Contracts Table */
-        .contracts-table {
-            overflow-x: auto;
-            margin: 2rem 0;
-        }
-
-        .contracts-table table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .contracts-table th,
-        .contracts-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(53, 183, 255, 0.2);
-        }
-
-        .contracts-table th {
-            background: rgba(53, 183, 255, 0.2);
-            color: #35b7ff;
-            font-weight: 600;
-        }
-
-        .contracts-table td code {
-            font-size: 0.85rem;
-        }
-
-        .status-live {
-            color: #74f05a;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.95);
-            border-top: 1px solid rgba(53, 183, 255, 0.2);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            color: #35b7ff;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: #35b7ff;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo-svg {
-            height: 40px;
-            width: 40px;
-        }
-
-        .footer-logo span {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #35b7ff;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(53, 183, 255, 0.2);
-            padding-top: 2rem;
-            text-align: center;
-            color: #828184;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero-buttons-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .whitepaper-content h3 {
-                font-size: 1.5rem;
-            }
-
-            .whitepaper-content h4 {
-                font-size: 1.2rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #000000;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #35b7ff;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #74f05a;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -592,7 +14,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="Logo_icon1.webp" alt="Paxeer Logo" class="logo-svg">
-                <span class="logo-text">Paxeer</span>
+                <span class="logo-text"></span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#abstract">Abstract</a></li>
@@ -692,639 +114,20 @@
                 
                 <p>The Paxeer network is engineered from the ground up to eliminate this friction through a comprehensive ecosystem approach. Our mission is to build a trustworthy crypto-trading platform that serves everyone, enabling healthy investments and increased profits through a superior user experience. We achieve this by reimagining the fundamental layers of user interaction, data provision, and smart contract wallet functionality.</p>
 
-                <h3>2.3 Wallet VM Creation Flow</h3>
-                <p>The creation of a Smart Wallet VM follows a streamlined process designed for optimal user experience:</p>
-                <ol>
-                    <li><strong>Initial Connection</strong>: User connects with any Web3 wallet (MetaMask, WalletConnect)</li>
-                    <li><strong>Network Validation</strong>: Automatic switch to Paxeer Network</li>
-                    <li><strong>Feature Selection</strong>: Choose desired capabilities (AI trading, DeFi, etc.)</li>
-                    <li><strong>Sponsored Deployment</strong>: Zero-cost wallet VM creation</li>
-                    <li><strong>Ecosystem Integration</strong>: Automatic registration with SSO system</li>
-                    <li><strong>Feature Activation</strong>: Enable selected advanced features</li>
-                </ol>
-
-                <div class="code-block">
-                    <pre><code>// Example wallet VM creation with PaxeerEcosystemSDK
-const result = await sdk.createSmartWallet([
-    'basic_transactions',
-    'ai_trading', 
-    'defi_integrations',
-    'cross_chain_bridge',
-    'social_recovery'
-]);
-
-if (result.success) {
-    console.log('Wallet VM Address:', result.walletVM);
-    console.log('Features Active:', result.features);
-    console.log('Gas Cost:', '0 PAX'); // Always sponsored
-}</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SSO System Section -->
-    <section id="sso" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/9.png" alt="SSO Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>3. The Paxeer Wallet SSO System: Universal Authentication</h2>
-            </div>
-            <div class="whitepaper-content">
-                <p>The Paxeer Wallet SSO system represents a paradigm shift from fragmented wallet connections to a unified, persistent authentication layer that spans the entire ecosystem.</p>
-
-                <h3>3.1 Core Architecture: The PaxeerWalletManager Contract</h3>
-                <p>At the heart of the SSO system is the PaxeerWalletManager.sol smart contract, serving as the central on-chain registry and management hub for all user sessions and dApp registrations.</p>
-                <p><strong>Contract Address</strong>: <code>0x64B053035b1eB3632eA1188Dd1CaE72FC0348153</code></p>
-
-                <h4>3.1.1 Session Management Protocol</h4>
-                <p>The contract manages comprehensive session lifecycles through sophisticated on-chain state management:</p>
-                <p><strong>Session Creation Functions:</strong></p>
+                <h3>1.1 Network Foundation</h3>
+                <p>Paxeer operates on a dedicated Aurora Virtual Chain with the following specifications:</p>
                 <ul>
-                    <li><code>createSession(uint256 duration, string memory dappId)</code>: Establishes new user session</li>
-                    <li><code>extendSession(uint256 additionalTime)</code>: Prolongs active sessions</li>
-                    <li><code>getSessionInfo(address user)</code>: Retrieves current session status</li>
-                    <li><code>terminateSession()</code>: Explicit session termination</li>
+                    <li><strong>Chain ID</strong>: 1313161822</li>
+                    <li><strong>RPC Endpoint</strong>: <code>https://0x4e45425e.rpc.aurora-cloud.dev</code></li>
+                    <li><strong>Explorer</strong>: <code>http://0x4e45425e.explorer.aurora-cloud.dev</code></li>
+                    <li><strong>Native Currency</strong>: ETH with comprehensive sponsored gas support</li>
+                    <li><strong>Consensus</strong>: Aurora's Proof-of-Stake with enhanced finality</li>
                 </ul>
-
-                <p><strong>Enhanced Session Features:</strong></p>
-                <ul>
-                    <li><strong>Persistent Storage</strong>: Sessions stored as blockchain state, ensuring durability</li>
-                    <li><strong>Cross-dApp Recognition</strong>: Single session valid across all registered ecosystem dApps</li>
-                    <li><strong>Automatic Renewal</strong>: Background session extension for active users</li>
-                    <li><strong>Security Timeouts</strong>: Configurable inactivity-based expiration</li>
-                </ul>
-
-                <h4>3.1.2 dApp Registry and Verification</h4>
-                <p>The SSO system maintains a comprehensive registry of verified ecosystem participants:</p>
-                <p><strong>Registration Functions:</strong></p>
-                <ul>
-                    <li><code>registerDapp(string memory dappId, address dappContract)</code>: Add new dApp</li>
-                    <li><code>deactivateDapp(string memory dappId)</code>: Temporarily disable dApp access</li>
-                    <li><code>reactivateDapp(string memory dappId)</code>: Restore dApp functionality</li>
-                    <li><code>getDappInfo(string memory dappId)</code>: Retrieve dApp metadata</li>
-                </ul>
-
-                <p><strong>Security Features:</strong></p>
-                <ul>
-                    <li><strong>Identity Verification</strong>: Multi-stage dApp authentication process</li>
-                    <li><strong>Reputation Scoring</strong>: Track dApp reliability and user satisfaction</li>
-                    <li><strong>Automatic Monitoring</strong>: Continuous security assessment</li>
-                    <li><strong>Malicious Detection</strong>: AI-powered threat identification</li>
-                </ul>
-
-                <h3>3.2 Enhanced User Experience Flow</h3>
-                <p>The SSO system transforms the traditional Web3 user journey:</p>
-
-                <h4>3.2.1 First-Time Connection Experience</h4>
-                <ol>
-                    <li><strong>Universal Connection Button</strong>: Single "Connect to Paxeer Ecosystem" button</li>
-                    <li><strong>Enhanced Selection Modal</strong>: Choose between Smart Wallet VM or traditional wallet</li>
-                    <li><strong>Automatic Network Configuration</strong>: Seamless Paxeer Network setup</li>
-                    <li><strong>Feature Onboarding</strong>: Interactive tutorial for advanced capabilities</li>
-                    <li><strong>Session Establishment</strong>: Persistent authentication across ecosystem</li>
-                </ol>
-
-                <h4>3.2.2 Returning User Auto-Connection</h4>
-                <p>For returning users, the experience is instantaneous:</p>
-                <ul>
-                    <li><strong>Automatic Detection</strong>: PaxeerEcosystemSDK queries session status</li>
-                    <li><strong>Background Validation</strong>: Verify session integrity and permissions</li>
-                    <li><strong>Instant Access</strong>: Zero-click connection to any ecosystem dApp</li>
-                    <li><strong>Context Preservation</strong>: Maintain user preferences and settings</li>
-                    <li><strong>Security Verification</strong>: Continuous authentication monitoring</li>
-                </ul>
-
-                <h4>3.2.3 Cross-dApp Navigation</h4>
-                <p>Users enjoy seamless navigation between ecosystem applications:</p>
-                <ul>
-                    <li><strong>Session Portability</strong>: Single authentication valid across all dApps</li>
-                    <li><strong>State Synchronization</strong>: User preferences sync automatically</li>
-                    <li><strong>Transaction Continuity</strong>: Maintain transaction state during navigation</li>
-                    <li><strong>Unified Wallet Access</strong>: Consistent wallet interface everywhere</li>
-                    <li><strong>Feature Continuity</strong>: Smart Wallet VM features available universally</li>
-                </ul>
-
-                <h3>3.3 Developer Integration: Comprehensive SDK</h3>
-                <p>The PaxeerEcosystemSDK provides developers with powerful integration tools:</p>
-
-                <h4>3.3.1 JavaScript SDK Features</h4>
-                <div class="code-block">
-                    <pre><code>import PaxeerEcosystemSDK from 'paxeer-ecosystem-sdk';
-
-const sdk = new PaxeerEcosystemSDK({
-    contracts: {
-        walletManager: '0x64B053035b1eB3632eA1188Dd1CaE72FC0348153',
-        walletVMFactory: '0x49E86e35B52369f0e98f14EE23fB430c89d97632',
-        ecosystemConnector: '0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3'
-    },
-    dappId: 'my-dapp',
-    autoConnect: true
-});
-
-// Enhanced connection with Smart Wallet VM creation
-const result = await sdk.connect(); // Shows enhanced modal
-
-// Traditional wallet connection
-const traditional = await sdk.connectTraditionalWallet('metamask');
-
-// Smart Wallet VM creation
-const smartWallet = await sdk.createSmartWallet(['ai_trading', 'defi_integrations']);</code></pre>
-                </div>
-
-                <h4>3.3.2 React Component Integration</h4>
-                <div class="code-block">
-                    <pre><code>import { PaxeerConnectButton, usePaxeerWallet } from 'paxeer-ecosystem-sdk/react';
-
-function MyDApp() {
-    const { wallet, isConnected, features } = usePaxeerWallet();
-    
-    return (
-        &lt;div&gt;
-            &lt;PaxeerConnectButton 
-                variant="gradient"
-                size="large"
-                showFeaturePreview={true}
-                onConnection={(result) => {
-                    if (result.isWalletVM) {
-                        console.log('Smart Wallet VM created!');
-                    }
-                }}
-            /&gt;
-            
-            {isConnected && (
-                &lt;WalletDashboard 
-                    wallet={wallet}
-                    features={features}
-                /&gt;
-            )}
-        &lt;/div&gt;
-    );
-}</code></pre>
-                </div>
-
-                <h4>3.3.3 Advanced Event System</h4>
-                <p>The SDK provides comprehensive event monitoring:</p>
-                <div class="code-block">
-                    <pre><code>// Connection events
-sdk.on('connected', (data) => {
-    console.log('Wallet connected:', data.address);
-    console.log('Type:', data.isWalletVM ? 'Smart Wallet VM' : 'Traditional');
-});
-
-// Transaction events
-sdk.on('transactionExecuted', (data) => {
-    console.log('Transaction hash:', data.hash);
-    console.log('Gas cost:', data.gasUsed === 0 ? 'Sponsored' : data.gasUsed);
-});
-
-// Feature events
-sdk.on('featureActivated', (data) => {
-    console.log('New feature activated:', data.feature);
-    updateUI(data.feature);
-});</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Oracle Infrastructure Section -->
-    <section id="oracles" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/6.png" alt="Oracles Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>4. Comprehensive Oracle Infrastructure</h2>
-            </div>
-            <div class="whitepaper-content">
-                <p>Paxeer's oracle network provides the critical data foundation for all ecosystem operations, featuring specialized oracles for transaction monitoring, price tracking, and DeFi analytics.</p>
-
-                <h3>4.1 Oracle Network Architecture</h3>
-                <p>The oracle infrastructure consists of a hierarchical system built on the BaseOracle foundation:</p>
-
-                <div class="code-block">
-                    <pre>                    BaseOracle (Abstract)
-                  ├── ReentrancyGuard
-                  ├── Ownable
-                  └── Consensus Engine
-                           │
-        ┌──────────────────┼──────────────────┐
-        │                  │                  │
-  TransactionOracle   PriceOracle    LiquidityOracle
-  ┌─────────────────┐ ┌─────────────┐ ┌─────────────────┐
-  │ • TPS           │ │ • Token     │ │ • Pool TVL      │
-  │ • Gas Usage     │ │   Prices    │ │ • Volume        │
-  │ • Success Rate  │ │ • 24h Volume│ │ • APR           │
-  │ • Block Time    │ │ • Market Cap│ │ • Utilization   │
-  │ • Mempool Size  │ │ • Liquidity │ │ • Impermanent   │
-  │ • Congestion    │ │ • Changes   │ │   Loss          │
-  └─────────────────┘ └─────────────┘ └─────────────────┘</pre>
-                </div>
-
-                <h3>4.2 BaseOracle: Foundation Infrastructure</h3>
-                <p>The BaseOracle contract provides essential functionality for all specialized oracles:</p>
-
-                <h4>4.2.1 Core Components</h4>
-                <p><strong>Reporter Registry Management:</strong></p>
-                <ul>
-                    <li>Authorized data reporter tracking</li>
-                    <li>Stake management and slashing mechanisms</li>
-                    <li>Performance metrics and reputation scoring</li>
-                    <li>Automated activation/deactivation protocols</li>
-                </ul>
-
-                <p><strong>Consensus Engine:</strong></p>
-                <ul>
-                    <li>Multi-reporter data validation</li>
-                    <li>Median calculation with outlier detection</li>
-                    <li>Reputation-weighted averaging</li>
-                    <li>Bounds checking and tolerance verification</li>
-                </ul>
-
-                <p><strong>Data Storage System:</strong></p>
-                <ul>
-                    <li>Time-series data with metadata</li>
-                    <li>Historical lookup capabilities</li>
-                    <li>Efficient query optimization</li>
-                    <li>Scalable storage architecture</li>
-                </ul>
-
-                <h3>4.3 Transaction Oracle: Network Performance Monitoring</h3>
-                <p><strong>Contract Address</strong>: <code>0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60</code></p>
-                <p>The Transaction Oracle provides real-time network performance metrics essential for ecosystem optimization:</p>
-
-                <h4>4.3.1 Monitored Metrics</h4>
-                <p><strong>Core Performance Indicators:</strong></p>
-                <ul>
-                    <li><strong>Network TPS</strong>: Real-time transactions per second tracking</li>
-                    <li><strong>Average Gas Usage</strong>: Per-transaction gas consumption analysis</li>
-                    <li><strong>Success Rate</strong>: Transaction success/failure ratio monitoring</li>
-                    <li><strong>Pending Transactions</strong>: Current mempool size tracking</li>
-                    <li><strong>Block Time</strong>: Average time between block confirmations</li>
-                    <li><strong>Network Congestion</strong>: Comprehensive mempool analysis</li>
-                </ul>
-
-                <h3>4.4 Price Oracle: Comprehensive Market Data</h3>
-                <p><strong>Contract Address</strong>: <code>0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0</code></p>
-                <p>The Price Oracle delivers real-time pricing and market analytics for ecosystem tokens:</p>
-
-                <h4>4.4.1 Supported Assets</h4>
-                <p><strong>Primary Ecosystem Tokens:</strong></p>
-                <ul>
-                    <li><strong>PAXUSD</strong>: Ecosystem stablecoin with full price stability tracking</li>
-                    <li><strong>bPAX</strong>: Liquid staking derivative with yield calculation</li>
-                    <li><strong>PAX</strong>: Base network currency with cross-chain price correlation</li>
-                </ul>
-
-                <h3>4.5 Liquidity Oracle: DeFi Analytics Platform</h3>
-                <p><strong>Contract Address</strong>: <code>0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21</code></p>
-                <p>The Liquidity Oracle provides comprehensive DeFi pool monitoring and analytics:</p>
-
-                <h4>4.5.1 Comprehensive Pool Metrics</h4>
-                <p><strong>Core Liquidity Data:</strong></p>
-                <ul>
-                    <li><strong>Total Value Locked (TVL)</strong>: Real-time pool liquidity tracking</li>
-                    <li><strong>Trading Volume</strong>: 24h/7d volume metrics per pool</li>
-                    <li><strong>Annual Percentage Rate (APR)</strong>: Dynamic yield calculations</li>
-                    <li><strong>Fee Collection</strong>: Trading fee accumulation tracking</li>
-                    <li><strong>Utilization Rate</strong>: Pool usage efficiency metrics</li>
-                    <li><strong>Impermanent Loss</strong>: LP position risk assessment</li>
-                </ul>
-
-                <h3>4.6 Data Infrastructure: ScyllaDB Integration</h3>
-                <p>The oracle network utilizes ScyllaDB for high-performance time-series data storage:</p>
-
-                <h4>4.6.1 Database Architecture</h4>
-                <div class="code-block">
-                    <pre><code>-- Core oracle data table
-CREATE TABLE oracle_data (
-    oracle_type text,
-    data_key text,
-    timestamp timestamp,
-    value decimal,
-    reporter_address text,
-    consensus_confidence decimal,
-    PRIMARY KEY ((oracle_type, data_key), timestamp)
-) WITH CLUSTERING ORDER BY (timestamp DESC);
-
--- Specialized tables for each oracle type
-CREATE TABLE transaction_metrics (
-    timestamp timestamp,
-    tps int,
-    avg_gas_used bigint,
-    success_rate decimal,
-    block_time int,
-    mempool_size int,
-    PRIMARY KEY (timestamp)
-) WITH CLUSTERING ORDER BY (timestamp DESC);</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Security Section -->
-    <section id="security" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/1.png" alt="Security Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>5. Security Architecture: Multi-Layer Protection</h2>
-            </div>
-            <div class="whitepaper-content">
-                <p>Security is paramount throughout the Paxeer ecosystem, implemented through comprehensive multi-layer protection mechanisms.</p>
-
-                <h3>5.1 Smart Contract Security</h3>
-                <h4>5.1.1 Access Control Framework</h4>
-                <p><strong>Role-Based Permissions:</strong></p>
-                <ul>
-                    <li><code>onlyOwner</code> modifiers for critical administrative functions</li>
-                    <li><code>onlyReporter</code> restrictions for oracle data submission</li>
-                    <li>Multi-signature requirements for high-value operations</li>
-                    <li>Time-locked governance for parameter changes</li>
-                </ul>
-
-                <p><strong>Comprehensive Input Validation:</strong></p>
-                <div class="code-block">
-                    <pre><code>modifier validDataSubmission(bytes32 dataKey, uint256 value) {
-    require(dataKey != bytes32(0), "Invalid data key");
-    require(value > 0 && value <= MAX_VALUE, "Value out of bounds");
-    require(block.timestamp - lastReport[msg.sender] >= MIN_INTERVAL, "Too frequent");
-    _;
-}</code></pre>
-                </div>
-
-                <h4>5.1.2 Cryptographic Security</h4>
-                <p><strong>Session Authentication:</strong></p>
-                <ul>
-                    <li>Cryptographic signature verification for all session creation</li>
-                    <li>Nonce-based message signing prevents replay attacks</li>
-                    <li>Time-based session tokens with configurable expiration</li>
-                    <li>Multi-factor authentication support for high-value accounts</li>
-                </ul>
-
-                <h3>5.2 Oracle Security Framework</h3>
-                <h4>5.2.1 Data Integrity Protection</h4>
-                <p><strong>Multi-Reporter Consensus:</strong></p>
-                <ul>
-                    <li>Minimum 3 reporters required for data validation</li>
-                    <li>Reputation-weighted consensus algorithm</li>
-                    <li>Outlier detection and automatic rejection</li>
-                    <li>Cross-validation with external data sources</li>
-                </ul>
-
-                <h3>5.3 Network Security</h3>
-                <h4>5.3.1 DDoS Protection</h4>
-                <p><strong>Rate Limiting:</strong></p>
-                <ul>
-                    <li>Per-address transaction rate limits</li>
-                    <li>API endpoint throttling mechanisms</li>
-                    <li>Oracle submission frequency controls</li>
-                    <li>Progressive backoff for repeated violations</li>
-                </ul>
-
-                <h4>5.3.2 Smart Contract Audit Status</h4>
-                <p>All core contracts undergo comprehensive security auditing:</p>
-                <p><strong>Audit Coverage:</strong></p>
-                <ul>
-                    <li>BaseOracle and specialized oracle contracts</li>
-                    <li>WalletVM implementation and factory contracts</li>
-                    <li>PaxeerWalletManager and SSO system</li>
-                    <li>EcosystemConnector and integration contracts</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Economics Section -->
-    <section id="economics" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/2.png" alt="Economics Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>6. Economic Model and Tokenomics</h2>
-            </div>
-            <div class="whitepaper-content">
-                <h3>6.1 Sponsored Transaction Model</h3>
-                <p>The Paxeer ecosystem operates on a revolutionary sponsored transaction model that completely eliminates gas fees for end users:</p>
-
-                <h4>6.1.1 Gas Sponsorship Mechanism</h4>
-                <p><strong>Zero-Cost User Experience:</strong></p>
-                <ul>
-                    <li>All ecosystem transactions execute with <code>gasPrice: 0</code></li>
-                    <li>Network validators compensated through ecosystem treasury</li>
-                    <li>Automatic gas price override for all wallet operations</li>
-                    <li>No user wallet balance requirements for transaction execution</li>
-                </ul>
-
-                <div class="code-block">
-                    <pre><code>// All transactions sponsored automatically
-const tx = await walletVM.executeTransaction(
-    targetContract,
-    transactionData,
-    { gasPrice: 0 } // Always sponsored
-);</code></pre>
-                </div>
-
-                <h3>6.2 Token Utility Framework</h3>
-                <h4>6.2.1 PAXUSD: Ecosystem Stablecoin</h4>
-                <p><strong>Core Functions:</strong></p>
-                <ul>
-                    <li>Primary trading pair for all ecosystem tokens</li>
-                    <li>Oracle staking currency for enhanced security</li>
-                    <li>Yield farming reward distribution token</li>
-                    <li>Cross-chain liquidity provision currency</li>
-                </ul>
-
-                <h4>6.2.2 bPAX: Liquid Staking Derivative</h4>
-                <p><strong>Staking Features:</strong></p>
-                <ul>
-                    <li>Automated PAX staking with instant liquidity</li>
-                    <li>Continuous reward accrual while maintaining tradability</li>
-                    <li>Integration with ecosystem yield farming protocols</li>
-                    <li>Validator selection optimization for maximum returns</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Performance Section -->
-    <section id="performance" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/4.png" alt="Performance Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>7. Performance Metrics and Scalability</h2>
-            </div>
-            <div class="whitepaper-content">
-                <h3>7.1 Current Performance Benchmarks</h3>
-                <h4>7.1.1 Transaction Processing</h4>
-                <p><strong>Network Capacity:</strong></p>
-                <ul>
-                    <li><strong>Current TPS</strong>: 150+ transactions per second sustained</li>
-                    <li><strong>Peak Capacity</strong>: 500+ TPS during high-demand periods</li>
-                    <li><strong>Average Confirmation Time</strong>: 2 seconds for standard transactions</li>
-                    <li><strong>Finality</strong>: 12 seconds for irreversible confirmation</li>
-                </ul>
-
-                <p><strong>Oracle Update Frequency:</strong></p>
-                <ul>
-                    <li><strong>Price Data</strong>: Updates every 30 seconds or on 1% price change</li>
-                    <li><strong>Transaction Metrics</strong>: Real-time updates every block</li>
-                    <li><strong>Liquidity Data</strong>: Updates every 5 minutes or on significant TVL change</li>
-                    <li><strong>Consensus Time</strong>: Maximum 30 seconds for multi-reporter validation</li>
-                </ul>
-
-                <h4>7.1.2 Database Performance</h4>
-                <p><strong>ScyllaDB Metrics:</strong></p>
-                <ul>
-                    <li><strong>Write Throughput</strong>: 10,000+ oracle updates per second</li>
-                    <li><strong>Query Latency</strong>: &lt;100ms average response time</li>
-                    <li><strong>Storage Efficiency</strong>: Optimized time-series compression</li>
-                    <li><strong>Availability</strong>: 99.9% uptime target with automatic failover</li>
-                </ul>
-
-                <h3>7.2 Scalability Architecture</h3>
-                <h4>7.2.1 Horizontal Scaling</h4>
-                <p><strong>Oracle Network Expansion:</strong></p>
-                <ul>
-                    <li>Support for 50+ concurrent reporters per oracle type</li>
-                    <li>Geographic distribution across multiple data centers</li>
-                    <li>Automatic load balancing and reporter rotation</li>
-                    <li>Dynamic scaling based on network demand</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Developer Experience Section -->
-    <section id="developer" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/5.png" alt="Developer Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>8. Developer Experience and Integration</h2>
-            </div>
-            <div class="whitepaper-content">
-                <h3>8.1 Comprehensive SDK Ecosystem</h3>
-                <p>The PaxeerEcosystemSDK provides developers with a complete toolkit for seamless integration:</p>
-
-                <h4>8.1.1 Multi-Framework Support</h4>
-                <div class="code-block">
-                    <pre><code>import PaxeerEcosystemSDK from 'paxeer-ecosystem-sdk';
-
-// Complete SDK initialization
-const sdk = new PaxeerEcosystemSDK({
-    network: 'paxeer-network',
-    chainId: 80000,
-    contracts: {
-        walletManager: '0x64B053035b1eB3632eA1188Dd1CaE72FC0348153',
-        walletVMFactory: '0x49E86e35B52369f0e98f14EE23fB430c89d97632',
-        ecosystemConnector: '0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3',
-        transactionOracle: '0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60',
-        priceOracle: '0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0',
-        liquidityOracle: '0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21'
-    },
-    dappId: 'my-ecosystem-app',
-    autoConnect: true
-});</code></pre>
-                </div>
-
-                <h4>8.1.2 React Integration</h4>
-                <div class="code-block">
-                    <pre><code>import { 
-    PaxeerProvider, 
-    usePaxeerWallet, 
-    PaxeerConnectButton 
-} from 'paxeer-ecosystem-sdk/react';
-
-function MyDApp() {
-    const { wallet, isConnected, features } = usePaxeerWallet();
-    
-    return (
-        &lt;PaxeerConnectButton 
-            variant="enhanced"
-            showFeaturePreview={true}
-        /&gt;
-    );
-}</code></pre>
-                </div>
-
-                <h3>8.2 API Ecosystem</h3>
-                <h4>8.2.1 RESTful API Endpoints</h4>
-                <div class="code-block">
-                    <pre><code># Health and Status
-GET /health                          # Service health check
-GET /api/overview                    # Ecosystem overview
-GET /api/network/stats              # Network statistics
-
-# Oracle Data Endpoints
-GET /api/oracles/transaction/latest  # Current transaction metrics
-GET /api/oracles/price/all          # All token prices
-GET /api/oracles/liquidity/pools    # All pool analytics</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="whitepaper-section">
-        <div class="section-background">
-            <img src="Background overlays/7.png" alt="Roadmap Background" class="section-bg">
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>9. Vision and Strategic Roadmap</h2>
-            </div>
-            <div class="whitepaper-content">
-                <h3>9.1 Ecosystem Benefits for All Participants</h3>
-                <p>Our vision is to help users derive fortune with the most reliable trading system while creating a self-reinforcing ecosystem that benefits all stakeholders.</p>
-
-                <h4>9.1.1 Enhanced User Experience</h4>
-                <p><strong>For Individual Users:</strong></p>
-                <ul>
-                    <li>✅ <strong>One-Click Access</strong>: Single authentication provides seamless access to the entire ecosystem</li>
-                    <li>✅ <strong>Zero Gas Fees</strong>: All transactions sponsored by the network, removing financial barriers</li>
-                    <li>✅ <strong>AI-Powered Trading</strong>: Smart Wallet VMs execute sophisticated trading strategies automatically</li>
-                    <li>✅ <strong>Risk Management</strong>: Built-in safety mechanisms and social recovery options</li>
-                >1.1 Network Foundation</h3>
-                <p>Paxeer operates on a dedicated L3 Beta Stack leveraging Base, Arbitrum, and Celestia with the following specifications:</p>
-                <ul>
-                    <li><strong>Chain Name</strong>: Paxeer Network</li>
-                    <li><strong>Chain ID</strong>: 80000</li>
-                    <li><strong>RPC Endpoint</strong>: <code>https://rpc-paxeer-network-djjz47ii4b.t.conduit.xyz/DgdWRnqiV7UGiMR2s9JPMqto415SW9tNG</code></li>
-                    <li><strong>Explorer</strong>: <code>paxscan.paxeer.app</code></li>
-                    <li><strong>Native Currency</strong>: PAX with comprehensive sponsored gas support</li>
-                    <li><strong>Consensus</strong>: L3 Beta Stack utilizing Base and Arbitrum security with Celestia data availability</li>
-                    <li><strong>Data Availability</strong>: Celestia modular blockchain for scalable data storage</li>
-                </ul>
-                
-                <p>This dedicated network infrastructure enables zero-cost transactions for users while maintaining full Ethereum Virtual Machine (EVM) compatibility and security through the L3 Beta Stack architecture.</p>
 
                 <h3>1.2 Ecosystem Architecture Overview</h3>
                 <p>The Paxeer ecosystem consists of multiple interconnected layers:</p>
-                <div class="code-block">
-                    <pre>┌─────────────────────────────────────────────────────────────────────┐
-│                        User Interface Layer                         │
-├─────────────────────────────────────────────────────────────────────┤
-│  PaxeerEcosystemSDK │ Universal Connection Modal│ Feature Dashboard │
-├─────────────────────┬───────────────────────────┬───────────────────┤
-│   Smart Wallet VMs  │  Single Sign-On System    │ Oracle Network    │
-│                     │                           │                   │
-│ • AI Trading        │ • PaxeerWalletManager     │ • Transaction     │
-│ • Cross-Chain Ops   │ • Session Management      │   Oracle          │
-│ • Yield Farming     │ • Auto-Connection         │ • Price Oracle    │
-│ • Social Recovery   │ • Zero-Gas Execution      │ •Liquidity Oracle │
-├─────────────────────┴───────────────────────────┴───────────────────┤
-│                    Core Blockchain Infrastructure                   │
-│          L3 Beta Stack (Base, Arbitrum, Celestia) Chain ID: 80000   │
-└─────────────────────────────────────────────────────────────────────┘</pre>
+                <div class="architecture-diagram">
+                    <img src="UI Illustrations Black/9305d6eb-9240-43dd-8d55-d131408dadba.png" alt="Ecosystem Architecture" class="arch-image">
                 </div>
             </div>
         </div>
@@ -1416,5 +219,952 @@ GET /api/oracles/liquidity/pools    # All pool analytics</code></pre>
                     <li><strong>Identity Verification</strong>: KYC-integrated recovery processes</li>
                     <li><strong>Emergency Protocols</strong>: Immediate security response mechanisms</li>
                 </ul>
+            </div>
+        </div>
+    </section>
 
-                <h3
+    <!-- SSO System Section -->
+    <section id="sso" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/9.png" alt="SSO Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>3. The Paxeer Wallet SSO System: Universal Authentication</h2>
+            </div>
+            <div class="whitepaper-content">
+                <p>The Paxeer Wallet SSO system represents a paradigm shift from fragmented wallet connections to a unified, persistent authentication layer that spans the entire ecosystem.</p>
+
+                <h3>3.1 Core Architecture: The PaxeerWalletManager Contract</h3>
+                <p>At the heart of the SSO system is the PaxeerWalletManager.sol smart contract, serving as the central on-chain registry and management hub for all user sessions and dApp registrations.</p>
+                <p><strong>Contract Address</strong>: <code>0x64B053035b1eB3632eA1188Dd1CaE72FC0348153</code></p>
+
+                <h4>3.1.1 Session Management Protocol</h4>
+                <p>The contract manages comprehensive session lifecycles through sophisticated on-chain state management:</p>
+                <p><strong>Session Creation Functions:</strong></p>
+                <ul>
+                    <li><code>createSession(uint256 duration, string memory dappId)</code>: Establishes new user session</li>
+                    <li><code>extendSession(uint256 additionalTime)</code>: Prolongs active sessions</li>
+                    <li><code>getSessionInfo(address user)</code>: Retrieves current session status</li>
+                    <li><code>terminateSession()</code>: Explicit session termination</li>
+                </ul>
+
+                <p><strong>Enhanced Session Features:</strong></p>
+                <ul>
+                    <li><strong>Persistent Storage</strong>: Sessions stored as blockchain state, ensuring durability</li>
+                    <li><strong>Cross-dApp Recognition</strong>: Single session valid across all registered ecosystem dApps</li>
+                    <li><strong>Automatic Renewal</strong>: Background session extension for active users</li>
+                    <li><strong>Security Timeouts</strong>: Configurable inactivity-based expiration</li>
+                </ul>
+
+                <h4>3.1.2 dApp Registry and Verification</h4>
+                <p>The SSO system maintains a comprehensive registry of verified ecosystem participants:</p>
+                <p><strong>Registration Functions:</strong></p>
+                <ul>
+                    <li><code>registerDapp(string memory dappId, address dappContract)</code>: Add new dApp</li>
+                    <li><code>deactivateDapp(string memory dappId)</code>: Temporarily disable dApp access</li>
+                    <li><code>reactivateDapp(string memory dappId)</code>: Restore dApp functionality</li>
+                    <li><code>getDappInfo(string memory dappId)</code>: Retrieve dApp metadata</li>
+                </ul>
+
+                <h3>3.2 Enhanced User Experience Flow</h3>
+                <p>The SSO system transforms the traditional Web3 user journey:</p>
+
+                <h4>3.2.1 First-Time Connection Experience</h4>
+                <ol>
+                    <li><strong>Universal Connection Button</strong>: Single "Connect to Paxeer Ecosystem" button</li>
+                    <li><strong>Enhanced Selection Modal</strong>: Choose between Smart Wallet VM or traditional wallet</li>
+                    <li><strong>Automatic Network Configuration</strong>: Seamless Paxeer Network setup</li>
+                    <li><strong>Feature Onboarding</strong>: Interactive tutorial for advanced capabilities</li>
+                    <li><strong>Session Establishment</strong>: Persistent authentication across ecosystem</li>
+                </ol>
+
+                <div class="architecture-diagram">
+                    <img src="UI Illustrations Black/0f140739-1969-4a19-b3c6-03ee5b548c40.png" alt="SSO Flow" class="arch-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oracle Infrastructure Section -->
+    <section id="oracles" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/6.png" alt="Oracles Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>4. Comprehensive Oracle Infrastructure</h2>
+            </div>
+            <div class="whitepaper-content">
+                <p>Paxeer's oracle network provides the critical data foundation for all ecosystem operations, featuring specialized oracles for transaction monitoring, price tracking, and DeFi analytics.</p>
+
+                <h3>4.1 Oracle Network Architecture</h3>
+                <p>The oracle infrastructure consists of a hierarchical system built on the BaseOracle foundation:</p>
+
+                <div class="oracle-architecture">
+                    <img src="UI Illustrations Black/f394e29d-0264-47f3-b495-0635b68a04ad.png" alt="Oracle Architecture" class="oracle-image">
+                </div>
+
+                <h3>4.2 Transaction Oracle: Network Performance Monitoring</h3>
+                <p><strong>Contract Address</strong>: <code>0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60</code></p>
+                <p>The Transaction Oracle provides real-time network performance metrics essential for ecosystem optimization:</p>
+
+                <h4>4.2.1 Monitored Metrics</h4>
+                <p><strong>Core Performance Indicators:</strong></p>
+                <ul>
+                    <li><strong>Network TPS</strong>: Real-time transactions per second tracking</li>
+                    <li><strong>Average Gas Usage</strong>: Per-transaction gas consumption analysis</li>
+                    <li><strong>Success Rate</strong>: Transaction success/failure ratio monitoring</li>
+                    <li><strong>Pending Transactions</strong>: Current mempool size tracking</li>
+                    <li><strong>Block Time</strong>: Average time between block confirmations</li>
+                    <li><strong>Network Congestion</strong>: Comprehensive mempool analysis</li>
+                </ul>
+
+                <h3>4.3 Price Oracle: Comprehensive Market Data</h3>
+                <p><strong>Contract Address</strong>: <code>0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0</code></p>
+                <p>The Price Oracle delivers real-time pricing and market analytics for ecosystem tokens:</p>
+
+                <h4>4.3.1 Supported Assets</h4>
+                <p><strong>Primary Ecosystem Tokens:</strong></p>
+                <ul>
+                    <li><strong>PAXUSD</strong>: Ecosystem stablecoin with full price stability tracking</li>
+                    <li><strong>bETH</strong>: Liquid staking derivative with yield calculation</li>
+                    <li><strong>ETH</strong>: Base network currency with cross-chain price correlation</li>
+                </ul>
+
+                <h3>4.4 Liquidity Oracle: DeFi Analytics Platform</h3>
+                <p><strong>Contract Address</strong>: <code>0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21</code></p>
+                <p>The Liquidity Oracle provides comprehensive DeFi pool monitoring and analytics:</p>
+
+                <h4>4.4.1 Comprehensive Pool Metrics</h4>
+                <p><strong>Core Liquidity Data:</strong></p>
+                <ul>
+                    <li><strong>Total Value Locked (TVL)</strong>: Real-time pool liquidity tracking</li>
+                    <li><strong>Trading Volume</strong>: 24h/7d volume metrics per pool</li>
+                    <li><strong>Annual Percentage Rate (APR)</strong>: Dynamic yield calculations</li>
+                    <li><strong>Fee Collection</strong>: Trading fee accumulation tracking</li>
+                    <li><strong>Utilization Rate</strong>: Pool usage efficiency metrics</li>
+                    <li><strong>Impermanent Loss</strong>: LP position risk assessment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/1.png" alt="Security Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>5. Security Architecture: Multi-Layer Protection</h2>
+            </div>
+            <div class="whitepaper-content">
+                <p>Security is paramount throughout the Paxeer ecosystem, implemented through comprehensive multi-layer protection mechanisms.</p>
+
+                <h3>5.1 Smart Contract Security</h3>
+                <h4>5.1.1 Access Control Framework</h4>
+                <p><strong>Role-Based Permissions:</strong></p>
+                <ul>
+                    <li><code>onlyOwner</code> modifiers for critical administrative functions</li>
+                    <li><code>onlyReporter</code> restrictions for oracle data submission</li>
+                    <li>Multi-signature requirements for high-value operations</li>
+                    <li>Time-locked governance for parameter changes</li>
+                </ul>
+
+                <div class="code-block">
+                    <pre><code>modifier validDataSubmission(bytes32 dataKey, uint256 value) {
+    require(dataKey != bytes32(0), "Invalid data key");
+    require(value > 0 && value <= MAX_VALUE, "Value out of bounds");
+    require(block.timestamp - lastReport[msg.sender] >= MIN_INTERVAL, "Too frequent");
+    _;
+}</code></pre>
+                </div>
+
+                <h4>5.1.2 Cryptographic Security</h4>
+                <p><strong>Session Authentication:</strong></p>
+                <ul>
+                    <li>Cryptographic signature verification for all session creation</li>
+                    <li>Nonce-based message signing prevents replay attacks</li>
+                    <li>Time-based session tokens with configurable expiration</li>
+                    <li>Multi-factor authentication support for high-value accounts</li>
+                </ul>
+
+                <h3>5.2 Oracle Security Framework</h3>
+                <h4>5.2.1 Data Integrity Protection</h4>
+                <p><strong>Multi-Reporter Consensus:</strong></p>
+                <ul>
+                    <li>Minimum 3 reporters required for data validation</li>
+                    <li>Reputation-weighted consensus algorithm</li>
+                    <li>Outlier detection and automatic rejection</li>
+                    <li>Cross-validation between multiple data sources</li>
+                </ul>
+
+                <div class="architecture-diagram">
+                    <img src="UI Illustrations Black/b0b3482a-668e-4e1c-97a0-a55481381c32.png" alt="Security Framework" class="arch-image">
+                </div>
+
+                <h3>5.3 Network Security</h3>
+                <h4>5.3.1 DDoS Protection</h4>
+                <p><strong>Rate Limiting:</strong></p>
+                <ul>
+                    <li>Per-address transaction rate limits</li>
+                    <li>API endpoint throttling mechanisms</li>
+                    <li>Oracle submission frequency controls</li>
+                    <li>Progressive backoff for repeated violations</li>
+                </ul>
+
+                <h4>5.3.2 Smart Contract Audit Status</h4>
+                <p>All core contracts undergo comprehensive security auditing:</p>
+                <p><strong>Audit Coverage:</strong></p>
+                <ul>
+                    <li>BaseOracle and specialized oracle contracts</li>
+                    <li>WalletVM implementation and factory contracts</li>
+                    <li>PaxeerWalletManager and SSO system</li>
+                    <li>EcosystemConnector and integration contracts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Economics Section -->
+    <section id="economics" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/2.png" alt="Economics Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>6. Economic Model and Tokenomics</h2>
+            </div>
+            <div class="whitepaper-content">
+                <h3>6.1 Sponsored Transaction Model</h3>
+                <p>The Paxeer ecosystem operates on a revolutionary sponsored transaction model that completely eliminates gas fees for end users:</p>
+
+                <h4>6.1.1 Gas Sponsorship Mechanism</h4>
+                <p><strong>Zero-Cost User Experience:</strong></p>
+                <ul>
+                    <li>All ecosystem transactions execute with <code>gasPrice: 0</code></li>
+                    <li>Network validators compensated through ecosystem treasury</li>
+                    <li>Automatic gas price override for all wallet operations</li>
+                    <li>No user wallet balance requirements for transaction execution</li>
+                </ul>
+
+                <div class="code-block">
+                    <pre><code>// All transactions sponsored automatically
+const tx = await walletVM.executeTransaction(
+    targetContract,
+    transactionData,
+    { gasPrice: 0 } // Always sponsored
+);</code></pre>
+                </div>
+
+                <h3>6.2 Token Utility Framework</h3>
+                <h4>6.2.1 PAXUSD: Ecosystem Stablecoin</h4>
+                <p><strong>Core Functions:</strong></p>
+                <ul>
+                    <li>Primary trading pair for all ecosystem tokens</li>
+                    <li>Oracle staking currency for enhanced security</li>
+                    <li>Yield farming reward distribution token</li>
+                    <li>Cross-chain liquidity provision currency</li>
+                </ul>
+
+                <h4>6.2.2 bETH: Liquid Staking Derivative</h4>
+                <p><strong>Staking Features:</strong></p>
+                <ul>
+                    <li>Automated ETH staking with instant liquidity</li>
+                    <li>Continuous reward accrual while maintaining tradability</li>
+                    <li>Integration with ecosystem yield farming protocols</li>
+                    <li>Validator selection optimization for maximum returns</li>
+                </ul>
+
+                <div class="architecture-diagram">
+                    <img src="UI Illustration color/Untitled design (7).png" alt="Economics Model" class="arch-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section id="performance" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/4.png" alt="Performance Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>7. Performance Metrics and Scalability</h2>
+            </div>
+            <div class="whitepaper-content">
+                <h3>7.1 Current Performance Benchmarks</h3>
+                <h4>7.1.1 Transaction Processing</h4>
+                <p><strong>Network Capacity:</strong></p>
+                <ul>
+                    <li><strong>Current TPS</strong>: 150+ transactions per second sustained</li>
+                    <li><strong>Peak Capacity</strong>: 500+ TPS during high-demand periods</li>
+                    <li><strong>Average Confirmation Time</strong>: 2 seconds for standard transactions</li>
+                    <li><strong>Finality</strong>: 12 seconds for irreversible confirmation</li>
+                </ul>
+
+                <p><strong>Oracle Update Frequency:</strong></p>
+                <ul>
+                    <li><strong>Price Data</strong>: Updates every 30 seconds or on 1% price change</li>
+                    <li><strong>Transaction Metrics</strong>: Real-time updates every block</li>
+                    <li><strong>Liquidity Data</strong>: Updates every 5 minutes or on significant TVL change</li>
+                    <li><strong>Consensus Time</strong>: Maximum 30 seconds for multi-reporter validation</li>
+                </ul>
+
+                <h4>7.1.2 Database Performance</h4>
+                <p><strong>ScyllaDB Metrics:</strong></p>
+                <ul>
+                    <li><strong>Write Throughput</strong>: 10,000+ oracle updates per second</li>
+                    <li><strong>Query Latency</strong>: &lt;100ms average response time</li>
+                    <li><strong>Storage Efficiency</strong>: Optimized time-series compression</li>
+                    <li><strong>Availability</strong>: 99.9% uptime target with automatic failover</li>
+                </ul>
+
+                <h3>7.2 Scalability Architecture</h3>
+                <h4>7.2.1 Horizontal Scaling</h4>
+                <p><strong>Oracle Network Expansion:</strong></p>
+                <ul>
+                    <li>Support for 50+ concurrent reporters per oracle type</li>
+                    <li>Geographic distribution across multiple data centers</li>
+                    <li>Automatic load balancing and reporter rotation</li>
+                    <li>Dynamic scaling based on network demand</li>
+                </ul>
+
+                <div class="architecture-diagram">
+                    <img src="UI Illustrations Black/354fb3ee-22a5-48d2-b145-8115b0937f18.png" alt="Performance Metrics" class="arch-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Experience Section -->
+    <section id="developer" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/5.png" alt="Developer Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>8. Developer Experience and Integration</h2>
+            </div>
+            <div class="whitepaper-content">
+                <h3>8.1 Comprehensive SDK Ecosystem</h3>
+                <p>The PaxeerEcosystemSDK provides developers with a complete toolkit for seamless integration:</p>
+
+                <h4>8.1.1 Multi-Framework Support</h4>
+                <div class="code-block">
+                    <pre><code>import PaxeerEcosystemSDK from 'paxeer-ecosystem-sdk';
+
+// Complete SDK initialization
+const sdk = new PaxeerEcosystemSDK({
+    network: 'paxeer-network',
+    chainId: 1313161822,
+    contracts: {
+        walletManager: '0x64B053035b1eB3632eA1188Dd1CaE72FC0348153',
+        walletVMFactory: '0x49E86e35B52369f0e98f14EE23fB430c89d97632',
+        ecosystemConnector: '0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3'
+    },
+    dappId: 'my-ecosystem-app',
+    autoConnect: true
+});</code></pre>
+                </div>
+
+                <h4>8.1.2 React Integration</h4>
+                <div class="code-block">
+                    <pre><code>import { 
+    PaxeerProvider, 
+    usePaxeerWallet, 
+    PaxeerConnectButton 
+} from 'paxeer-ecosystem-sdk/react';
+
+function MyDApp() {
+    const { wallet, isConnected, features } = usePaxeerWallet();
+    
+    return (
+        &lt;PaxeerConnectButton 
+            variant="enhanced"
+            showFeaturePreview={true}
+        /&gt;
+    );
+}</code></pre>
+                </div>
+
+                <h3>8.2 API Ecosystem</h3>
+                <h4>8.2.1 RESTful API Endpoints</h4>
+                <div class="code-block">
+                    <pre><code># Health and Status
+GET /health                          # Service health check
+GET /api/overview                    # Ecosystem overview
+GET /api/network/stats              # Network statistics
+
+# Oracle Data Endpoints
+GET /api/oracles/transaction/latest  # Current transaction metrics
+GET /api/oracles/price/all          # All token prices
+GET /api/oracles/liquidity/pools    # All pool analytics</code></pre>
+                </div>
+
+                <div class="architecture-diagram">
+                    <img src="UI Illustration color/Untitled design (1).png" alt="Developer Tools" class="arch-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/7.png" alt="Roadmap Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>9. Vision and Strategic Roadmap</h2>
+            </div>
+            <div class="whitepaper-content">
+                <h3>9.2 Technical Roadmap</h3>
+
+                <h4>9.2.1 Phase 1: Foundation (Q3-Q4 2025) ✅ <strong>COMPLETE</strong></h4>
+                <p><strong>Core Infrastructure:</strong></p>
+                <ul>
+                    <li>✅ Deploy all oracle contracts (Transaction, Price, Liquidity)</li>
+                    <li>✅ Implement PaxeerWalletManager SSO system</li>
+                    <li>✅ Launch Smart Wallet VM factory and implementation</li>
+                    <li>✅ Deploy ScyllaDB infrastructure for time-series data</li>
+                    <li>✅ Release PaxeerEcosystemSDK v1.0</li>
+                </ul>
+
+                <p><strong>Network Launch:</strong></p>
+                <ul>
+                    <li>✅ Paxeer Network deployment on Aurora Virtual Chain</li>
+                    <li>✅ Contract verification and security audits</li>
+                    <li>✅ Oracle reporter onboarding and validation</li>
+                    <li>✅ Initial dApp ecosystem partnerships</li>
+                </ul>
+
+                <h4>9.2.2 Phase 2: Enhanced Features (Q1-Q2 2026)</h4>
+                <p><strong>Advanced Smart Wallet Capabilities:</strong></p>
+                <ul>
+                    <li>🔄 <strong>AI Trading Engine</strong>: Machine learning-driven trading strategies</li>
+                    <li>🔄 <strong>Cross-Chain Bridge</strong>: Native multi-chain asset management</li>
+                    <li>🔄 <strong>Social Recovery</strong>: Decentralized account recovery mechanisms</li>
+                    <li>🔄 <strong>Yield Automation</strong>: Advanced DeFi strategy execution</li>
+                </ul>
+
+                <h4>9.2.3 Phase 3: Ecosystem Scaling (Q3-Q4 2026)</h4>
+                <p><strong>Multi-Chain Expansion:</strong></p>
+                <ul>
+                    <li>📋 <strong>Ethereum Mainnet</strong>: Deploy ecosystem components to Ethereum</li>
+                    <li>📋 <strong>Layer 2 Integration</strong>: Arbitrum, Optimism, Polygon deployment</li>
+                    <li>📋 <strong>Cross-Chain Messaging</strong>: Unified state across all supported networks</li>
+                    <li>📋 <strong>Universal Liquidity</strong>: Cross-chain liquidity aggregation</li>
+                </ul>
+
+                <h4>9.2.4 Phase 4: Advanced Ecosystem (2027+)</h4>
+                <p><strong>Next-Generation Features:</strong></p>
+                <ul>
+                    <li>📋 <strong>Quantum-Resistant Security</strong>: Future-proof cryptographic implementations</li>
+                    <li>📋 <strong>AI-Powered Risk Assessment</strong>: Advanced portfolio management</li>
+                    <li>📋 <strong>Institutional Infrastructure</strong>: Enterprise-grade custody and compliance</li>
+                    <li>📋 <strong>Regulatory Integration</strong>: Traditional finance bridge protocols</li>
+                                 </ul>
+             </div>
+         </div>
+     </section>
+
+     <!-- Ecosystem Benefits Section -->
+     <section class="whitepaper-section">
+         <div class="section-background">
+             <img src="UI Illustration color/Untitled design (2).png" alt="Benefits Background" class="section-bg">
+         </div>
+         <div class="container">
+             <div class="section-header">
+                 <h2>9.1 Ecosystem Benefits for All Participants</h2>
+             </div>
+             <div class="whitepaper-content">
+                 <p>Our vision is to help users derive fortune with the most reliable trading system while creating a self-reinforcing ecosystem that benefits all stakeholders.</p>
+
+                 <h4>9.1.1 Enhanced User Experience</h4>
+                 <p><strong>For Individual Users:</strong></p>
+                 <ul>
+                     <li>✅ <strong>One-Click Access</strong>: Single authentication provides seamless access to the entire ecosystem</li>
+                     <li>✅ <strong>Zero Gas Fees</strong>: All transactions sponsored by the network, removing financial barriers</li>
+                     <li>✅ <strong>AI-Powered Trading</strong>: Smart Wallet VMs execute sophisticated trading strategies automatically</li>
+                     <li>✅ <strong>Risk Management</strong>: Built-in safety mechanisms and social recovery options</li>
+                     <li>✅ <strong>Yield Optimization</strong>: Automated yield farming and liquidity provision</li>
+                     <li>✅ <strong>Cross-Chain Access</strong>: Unified interface for multi-blockchain operations</li>
+                 </ul>
+
+                 <p><strong>For Professional Traders:</strong></p>
+                 <ul>
+                     <li>✅ <strong>Advanced Analytics</strong>: Real-time oracle data for informed decision-making</li>
+                     <li>✅ <strong>Algorithmic Trading</strong>: Programmable Smart Wallet VMs for custom strategies</li>
+                     <li>✅ <strong>Portfolio Management</strong>: Comprehensive cross-chain asset tracking</li>
+                     <li>✅ <strong>Risk Assessment</strong>: Impermanent loss tracking and yield optimization</li>
+                     <li>✅ <strong>Market Intelligence</strong>: AI-driven market sentiment and trend analysis</li>
+                 </ul>
+
+                 <h4>9.1.2 Developer Empowerment</h4>
+                 <p><strong>For dApp Developers:</strong></p>
+                 <ul>
+                     <li>✅ <strong>Simplified Integration</strong>: Comprehensive SDK with drop-in components</li>
+                     <li>✅ <strong>Consistent UX</strong>: Standardized wallet connection and session management</li>
+                     <li>✅ <strong>Rich Data Access</strong>: Comprehensive oracle infrastructure for market data</li>
+                     <li>✅ <strong>No External Dependencies</strong>: Built-in session management and authentication</li>
+                     <li>✅ <strong>Sponsored Transactions</strong>: Users never pay gas fees</li>
+                     <li>✅ <strong>Advanced Features</strong>: Access to Smart Wallet VM capabilities</li>
+                 </ul>
+
+                 <div class="architecture-diagram">
+                     <img src="UI Illustration color/Untitled design (6).png" alt="Ecosystem Benefits" class="arch-image">
+                 </div>
+             </div>
+         </div>
+     </section>
+
+     <!-- Risk Analysis Section -->
+     <section class="whitepaper-section">
+         <div class="section-background">
+             <img src="Background overlays/8.png" alt="Risk Background" class="section-bg">
+         </div>
+         <div class="container">
+             <div class="section-header">
+                 <h2>10. Risk Analysis and Mitigation</h2>
+             </div>
+             <div class="whitepaper-content">
+                 <h3>10.1 Technical Risks</h3>
+                 <h4>10.1.1 Smart Contract Security</h4>
+                 <p><strong>Risk</strong>: Potential vulnerabilities in smart contract code could lead to fund loss or system compromise.</p>
+                 <p><strong>Mitigation Strategies:</strong></p>
+                 <ul>
+                     <li>Comprehensive security audits by multiple firms</li>
+                     <li>Formal verification of critical contract functions</li>
+                     <li>Bug bounty programs for ongoing security assessment</li>
+                     <li>Gradual deployment with safety mechanisms and emergency controls</li>
+                     <li>Multi-signature governance for critical parameter changes</li>
+                 </ul>
+
+                 <h4>10.1.2 Oracle Manipulation</h4>
+                 <p><strong>Risk</strong>: Malicious actors could attempt to manipulate oracle data feeds.</p>
+                 <p><strong>Mitigation Strategies:</strong></p>
+                 <ul>
+                     <li>Multi-reporter consensus requirements (minimum 3 validators)</li>
+                     <li>Reputation-based weighting system with economic penalties</li>
+                     <li>Outlier detection algorithms and automatic rejection</li>
+                     <li>Economic staking requirements for all oracle reporters</li>
+                     <li>Cross-validation with external data sources</li>
+                 </ul>
+
+                 <h3>10.2 Economic Risks</h3>
+                 <h4>10.2.1 Sustainable Gas Sponsorship</h4>
+                 <p><strong>Risk</strong>: Long-term viability of zero-gas-fee model under high network usage.</p>
+                 <p><strong>Mitigation Strategies:</strong></p>
+                 <ul>
+                     <li>Multiple revenue streams (trading fees, yield farming, premium features)</li>
+                     <li>Dynamic fee structures for high-value operations</li>
+                     <li>Ecosystem treasury management and reserve funds</li>
+                     <li>Partnership agreements for shared infrastructure costs</li>
+                     <li>Gradual transition to sustainable tokenomics model</li>
+                 </ul>
+
+                 <div class="architecture-diagram">
+                     <img src="UI Illustrations Black/3c4897f5-147b-41fe-939b-727397bcfee0.png" alt="Risk Management" class="arch-image">
+                 </div>
+             </div>
+         </div>
+     </section>
+
+     <!-- Conclusion Section -->
+     <section class="whitepaper-section">
+         <div class="section-background">
+             <img src="UI Illustration color/Untitled design (9).png" alt="Conclusion Background" class="section-bg">
+         </div>
+         <div class="container">
+             <div class="section-header">
+                 <h2>11. Conclusion</h2>
+             </div>
+             <div class="whitepaper-content">
+                 <p>The Paxeer network represents a fundamental evolution in decentralized application infrastructure, addressing the core challenges that have hindered mainstream Web3 adoption. Through the innovative combination of Smart Wallet Virtual Machines, comprehensive oracle infrastructure, and universal Single Sign-On, we have created a vertically integrated ecosystem that delivers on the promise of decentralized finance while maintaining the user experience expectations of modern applications.</p>
+
+                 <h3>11.1 Technical Achievement Summary</h3>
+                 <p><strong>Revolutionary User Experience:</strong></p>
+                 <ul>
+                     <li>Complete elimination of gas fees through sponsored transaction model</li>
+                     <li>Single sign-on authentication across entire ecosystem</li>
+                     <li>Advanced Smart Wallet VMs with AI trading and automated strategies</li>
+                     <li>Real-time oracle data integration for informed decision-making</li>
+                 </ul>
+
+                 <p><strong>Robust Infrastructure:</strong></p>
+                 <ul>
+                     <li>Comprehensive oracle network with multi-layer security</li>
+                     <li>High-performance data infrastructure supporting 10,000+ operations/second</li>
+                     <li>Advanced consensus mechanisms ensuring data integrity</li>
+                     <li>Scalable architecture designed for global adoption</li>
+                 </ul>
+
+                 <p><strong>Developer Empowerment:</strong></p>
+                 <ul>
+                     <li>Comprehensive SDK with multi-framework support</li>
+                     <li>Drop-in components for rapid integration</li>
+                     <li>Rich API ecosystem with real-time data streaming</li>
+                     <li>No external dependencies for core functionality</li>
+                 </ul>
+
+                 <h3>11.2 Market Impact Potential</h3>
+                 <p>The Paxeer ecosystem addresses a market opportunity that extends far beyond traditional DeFi users. By eliminating the primary barriers to Web3 adoption—complexity, cost, and fragmentation—we unlock access to:</p>
+                 <ul>
+                     <li><strong>Mainstream Users</strong>: Individuals deterred by gas fees and wallet complexity</li>
+                     <li><strong>Traditional Investors</strong>: Seeking simplified access to DeFi opportunities</li>
+                     <li><strong>Enterprise Developers</strong>: Requiring reliable infrastructure and seamless UX</li>
+                     <li><strong>Institutional Players</strong>: Needing advanced features with regulatory consideration</li>
+                 </ul>
+
+                 <h3>11.3 Vision Realization</h3>
+                 <p>Our vision to help users derive fortune with the most reliable trading system is manifested through:</p>
+                 <ul>
+                     <li><strong>Technological Excellence</strong>: State-of-the-art infrastructure that sets new standards for Web3 applications</li>
+                     <li><strong>Economic Innovation</strong>: Sustainable models that benefit all ecosystem participants</li>
+                     <li><strong>User Empowerment</strong>: Advanced capabilities accessible to users of all experience levels</li>
+                     <li><strong>Developer Support</strong>: Comprehensive tools that accelerate innovation</li>
+                 </ul>
+
+                 <p><strong>The revolution in Web3 user experience begins now. Welcome to Paxeer.</strong></p>
+
+                 <div class="architecture-diagram">
+                     <img src="UI Illustration color/Untitled design (12).png" alt="Paxeer Future" class="arch-image">
+                 </div>
+             </div>
+         </div>
+     </section>
+
+     <!-- Technical Specifications Section -->
+    <section class="whitepaper-section">
+        <div class="section-background">
+            <img src="Background overlays/8.png" alt="Specifications Background" class="section-bg">
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Specifications Summary</h2>
+            </div>
+            <div class="whitepaper-content">
+                <h3>Deployed Contracts</h3>
+                <div class="contracts-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Address</th>
+                                <th>Network</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Transaction Oracle</td>
+                                <td><code>0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60</code></td>
+                                <td>Paxeer (1313161822)</td>
+                                <td><span class="status-live">✅ Live</span></td>
+                            </tr>
+                            <tr>
+                                <td>Price Oracle</td>
+                                <td><code>0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0</code></td>
+                                <td>Paxeer (1313161822)</td>
+                                <td><span class="status-live">✅ Live</span></td>
+                            </tr>
+                            <tr>
+                                <td>Liquidity Oracle</td>
+                                <td><code>0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21</code></td>
+                                <td>Paxeer (1313161822)</td>
+                                <td><span class="status-live">✅ Live</span></td>
+                            </tr>
+                            <tr>
+                                <td>Wallet Manager</td>
+                                <td><code>0x64B053035b1eB3632eA1188Dd1CaE72FC0348153</code></td>
+                                <td>Paxeer (1313161822)</td>
+                                <td><span class="status-live">✅ Live</span></td>
+                            </tr>
+                            <tr>
+                                <td>Wallet VM Factory</td>
+                                <td><code>0x49E86e35B52369f0e98f14EE23fB430c89d97632</code></td>
+                                <td>Paxeer (1313161822)</td>
+                                <td><span class="status-live">✅ Live</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ecosystem Connector</td>
+                                <td><code>0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3</code></td>
+                                <td>Paxeer (1313161822)</td>
+                                <td><span class="status-live">✅ Live</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Network Information</h3>
+                <ul>
+                    <li><strong>RPC Endpoint</strong>: <code>https://0x4e45425e.rpc.aurora-cloud.dev</code></li>
+                    <li><strong>Explorer</strong>: <code>http://0x4e45425e.explorer.aurora-cloud.dev</code></li>
+                    <li><strong>Chain ID</strong>: <code>1313161822</code></li>
+                    <li><strong>Gas Model</strong>: Sponsored transactions (gasPrice: 0)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Assets Section -->
+    <section id="brand-assets" class="brand-assets-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Paxeer Brand Assets</h2>
+                <p>Official brand guidelines, colors, fonts, and logos for the Paxeer ecosystem</p>
+            </div>
+
+            <!-- Color Palette -->
+            <div id="brand-colors" class="brand-subsection">
+                <h3><i class="fas fa-palette"></i> Color Palette</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-preview pax-blue"></div>
+                        <div class="color-info">
+                            <h4>PaxBlue</h4>
+                            <span class="color-hex">#35b7ff</span>
+                            <span class="color-rgb">RGB(53, 183, 255)</span>
+                            <span class="color-usage">Primary Brand Color</span>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview pax-neon"></div>
+                        <div class="color-info">
+                            <h4>PaxNeon</h4>
+                            <span class="color-hex">#74f05a</span>
+                            <span class="color-rgb">RGB(116, 240, 90)</span>
+                            <span class="color-usage">Secondary Accent Color</span>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview pax-dark"></div>
+                        <div class="color-info">
+                            <h4>PaxDark</h4>
+                            <span class="color-hex">#000000</span>
+                            <span class="color-rgb">RGB(0, 0, 0)</span>
+                            <span class="color-usage">Background Color</span>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-preview pax-gray"></div>
+                        <div class="color-info">
+                            <h4>PaxGray</h4>
+                            <span class="color-hex">#828184</span>
+                            <span class="color-rgb">RGB(130, 129, 132)</span>
+                            <span class="color-usage">Text Secondary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Variations -->
+            <div id="brand-logos" class="brand-subsection">
+                <h3><i class="fas fa-image"></i> Logo Variations</h3>
+                <div class="logo-grid">
+                    <div class="logo-card">
+                        <div class="logo-showcase">
+                            <img src="Logo_icon1.webp" alt="Paxeer Icon Logo" class="brand-logo">
+                        </div>
+                        <div class="logo-details">
+                            <h4>Icon Logo</h4>
+                            <p>Compact brand mark for small spaces and icons</p>
+                            <div class="logo-specs">
+                                <span>Min Width: 32px</span>
+                                <span>Format: WebP, PNG, SVG</span>
+                                <span>Use: Favicons, social media</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-card">
+                        <div class="logo-showcase dark-bg">
+                            <img src="Logo_text.webp" alt="Paxeer Logo with Text - Dark" class="brand-logo">
+                        </div>
+                        <div class="logo-details">
+                            <h4>Logo with Text (Dark)</h4>
+                            <p>Full brand mark optimized for dark backgrounds</p>
+                            <div class="logo-specs">
+                                <span>Min Width: 150px</span>
+                                <span>Format: WebP, PNG, SVG</span>
+                                <span>Use: Headers, dark themes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-card">
+                        <div class="logo-showcase light-bg">
+                            <img src="logo_text_lightBG.webp" alt="Paxeer Logo with Text - Light" class="brand-logo">
+                        </div>
+                        <div class="logo-details">
+                            <h4>Logo with Text (Light)</h4>
+                            <p>Full brand mark optimized for light backgrounds</p>
+                            <div class="logo-specs">
+                                <span>Min Width: 150px</span>
+                                <span>Format: WebP, PNG, SVG</span>
+                                <span>Use: Light themes, documents</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-card">
+                        <div class="logo-showcase logo-comparison">
+                            <div class="logo-size-demo">
+                                <img src="Logo_icon1.webp" alt="Small Icon" class="logo-small">
+                                <img src="Logo_text.webp" alt="Medium Logo" class="logo-medium">
+                                <img src="logo_text_lightBG.webp" alt="Large Logo" class="logo-large">
+                            </div>
+                        </div>
+                        <div class="logo-details">
+                            <h4>Size Comparison</h4>
+                            <p>Visual reference for appropriate logo sizing</p>
+                            <div class="logo-specs">
+                                <span>Small: 32-64px (Icon only)</span>
+                                <span>Medium: 100-200px (With text)</span>
+                                <span>Large: 200px+ (Hero sections)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div id="brand-fonts" class="brand-subsection">
+                <h3><i class="fas fa-font"></i> Typography</h3>
+                <div class="typography-showcase">
+                    <div class="font-sample">
+                        <h4>Primary Font: Inter</h4>
+                        <div class="font-weights">
+                            <div class="weight-sample">
+                                <span class="font-weight-400">Regular (400)</span>
+                                <p class="font-demo font-400">The quick brown fox jumps over the lazy dog</p>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="font-weight-500">Medium (500)</span>
+                                <p class="font-demo font-500">The quick brown fox jumps over the lazy dog</p>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="font-weight-600">SemiBold (600)</span>
+                                <p class="font-demo font-600">The quick brown fox jumps over the lazy dog</p>
+                            </div>
+                            <div class="weight-sample">
+                                <span class="font-weight-800">ExtraBold (800)</span>
+                                <p class="font-demo font-800">The quick brown fox jumps over the lazy dog</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usage Guidelines -->
+            <div id="brand-guidelines" class="brand-subsection">
+                <h3><i class="fas fa-ruler"></i> Usage Guidelines</h3>
+                <div class="guidelines-grid">
+                    <div class="guideline-card">
+                        <div class="guideline-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4>Color Usage</h4>
+                        <ul>
+                            <li>PaxBlue: Primary buttons, links, accents</li>
+                            <li>PaxNeon: Secondary accents, highlights</li>
+                            <li>Never use gradients with brand colors</li>
+                            <li>Maintain high contrast ratios</li>
+                        </ul>
+                    </div>
+                    <div class="guideline-card">
+                        <div class="guideline-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h4>Logo Placement</h4>
+                        <ul>
+                            <li>Minimum clear space: 2x logo height</li>
+                            <li>Never distort or rotate the logo</li>
+                            <li>Maintain original proportions</li>
+                            <li>Use appropriate contrast for background</li>
+                        </ul>
+                    </div>
+                    <div class="guideline-card">
+                        <div class="guideline-icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <h4>Typography</h4>
+                        <ul>
+                            <li>Headers: Inter 600-800 weight</li>
+                            <li>Body text: Inter 400-500 weight</li>
+                            <li>Minimum font size: 14px</li>
+                            <li>Line height: 1.5-1.7 for readability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="brand-downloads">
+                <h3><i class="fas fa-download"></i> Download Assets</h3>
+                <p>Access the complete Paxeer brand asset package</p>
+                <div class="download-buttons">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download Logo Pack
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-palette"></i>
+                        Download Color Swatches
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-pdf"></i>
+                        Brand Guidelines PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="Logo_icon1.webp" alt="Paxeer Logo" class="footer-logo-svg">
+                        <span>Paxeer Whitepaper</span>
+                    </div>
+                    <p>A comprehensive technical white paper for the Paxeer Web3 ecosystem.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Development</h4>
+                    <ul>
+                        <li><a href="https://github.com/Paxeer-Network" target="_blank">GitHub Organization</a></li>
+                        <li><a href="https://www.npmjs.com/package/paxeer-ecosystem-sdk" target="_blank">Ecosystem SDK</a></li>
+                        <li><a href="https://www.npmjs.com/package/paxeer-web-interface" target="_blank">Web Interface</a></li>
+                        <li><a href="https://rpc.paxeer.app" target="_blank">RPC Endpoint</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ecosystem</h4>
+                    <ul>
+                        <li><a href="https://trade.paxeer.app" target="_blank">Trade Platform</a></li>
+                        <li><a href="https://paxscan.paxeer.app" target="_blank">Block Explorer</a></li>
+                        <li><a href="https://docs.paxeer.app" target="_blank">Documentation</a></li>
+                        <li><a href="https://apidocs.paxeer.app" target="_blank">API Docs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://t.me/paxcommunity" target="_blank">Telegram</a></li>
+                        <li><a href="https://twitter.com/paxeernet" target="_blank">Twitter</a></li>
+                        <li><a href="https://paxeer.app" target="_blank">Official Website</a></li>
+                        <li><a href="mailto:infopaxeer@paxeer.app">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paxeer. All rights reserved. | This white paper represents the current state of the Paxeer ecosystem as of August 2025.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
