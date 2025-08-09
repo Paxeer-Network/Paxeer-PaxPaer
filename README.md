@@ -18,7 +18,7 @@ Paxeer operates on a dedicated L3 Beta Stack leveraging Base, Arbitrum, and Cele
 
 - **Chain Name:** Paxeer Network
 - **Chain ID:** 80000
-- **RPC Endpoint:** https://rpc-paxeer-network-djjz47ii4b.t.conduit.xyz/DgdWRnqiV7UGiMR2s9JPMqto415SW9tNG
+- **RPC Endpoint:** https://rpc-paxeer-network.app
 - **Explorer:** paxscan.paxeer.app
 - **Native Currency:** PAX with comprehensive sponsored gas support
 - **Consensus:** L3 Beta Stack utilizing Base and Arbitrum security with Celestia data availability
