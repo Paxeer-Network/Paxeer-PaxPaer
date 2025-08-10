@@ -54,7 +54,7 @@ The cornerstone innovation of Paxeer is the Smart Wallet VM system, which transf
 The Smart Wallet VM system consists of three primary contracts:
 
 #### 2.1.1 WalletVMFactory Contract
-**Address:** 0x49E86e35B52369f0e98f14EE23fB430c89d97632  
+**Address:** 0xC86037276DdFD4e6565aF05B267232F72655E82e  
 **Purpose:** Deploys and manages individual Wallet VM instances  
 **Features:** Feature activation, wallet creation, and lifecycle management
 
@@ -75,12 +75,12 @@ contract WalletVMFactory {
 ```
 
 #### 2.1.2 WalletVMImplementation Contract
-**Address:** 0x080eA6E2c009A047B9D6BD0ebfa509926e485D0b  
+**Address:** 0xC5002F87e1cb8BC850660Dd4BC63Ff8ab2B5543C  
 **Purpose:** Core logic template for all Wallet VM instances  
 **Features:** Transaction execution, feature management, security controls
 
 #### 2.1.3 EcosystemConnector Contract
-**Address:** 0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3  
+**Address:** 0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3  
 **Purpose:** Bridges Wallet VMs with the broader ecosystem  
 **Features:** dApp integration, cross-wallet communication, ecosystem transactions
 
@@ -144,7 +144,7 @@ The Paxeer Wallet SSO system represents a paradigm shift from fragmented wallet 
 ### 3.1 Core Architecture: The PaxeerWalletManager Contract
 At the heart of the SSO system is the PaxeerWalletManager.sol smart contract, serving as the central on-chain registry and management hub for all user sessions and dApp registrations.
 
-**Contract Address:** 0x64B053035b1eB3632eA1188Dd1CaE72FC0348153
+**Contract Address:** 0x23eAcfad6C0208FB13203226162e05D85859Bc52
 
 #### 3.1.1 Session Management Protocol
 The contract manages comprehensive session lifecycles through sophisticated on-chain state management:
@@ -211,9 +211,9 @@ import PaxeerEcosystemSDK from 'paxeer-ecosystem-sdk';
 
 const sdk = new PaxeerEcosystemSDK({
     contracts: {
-        walletManager: '0x64B053035b1eB3632eA1188Dd1CaE72FC0348153',
-        walletVMFactory: '0x49E86e35B52369f0e98f14EE23fB430c89d97632',
-        ecosystemConnector: '0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3'
+        walletManager: '0x23eAcfad6C0208FB13203226162e05D85859Bc52',
+        walletVMFactory: '0xC86037276DdFD4e6565aF05B267232F72655E82e',
+        ecosystemConnector: '0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3'
     },
     dappId: 'my-dapp',
     autoConnect: true
@@ -823,9 +823,9 @@ const sdk = new PaxeerEcosystemSDK({
     network: 'paxeer-network',
     chainId: 80000,
     contracts: {
-        walletManager: '0x64B053035b1eB3632eA1188Dd1CaE72FC0348153',
-        walletVMFactory: '0x49E86e35B52369f0e98f14EE23fB430c89d97632',
-        ecosystemConnector: '0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3',
+        walletManager: '0x23eAcfad6C0208FB13203226162e05D85859Bc52',
+        walletVMFactory: '0xC86037276DdFD4e6565aF05B267232F72655E82e',
+        ecosystemConnector: '0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3',
         transactionOracle: '0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60',
         priceOracle: '0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0',
         liquidityOracle: '0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21'
@@ -1408,9 +1408,9 @@ The Paxeer network is not merely another blockchain protocol—it is the foundat
 | Transaction Oracle | 0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60 | Paxeer (80000) | ✅ Live |
 | Price Oracle | 0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0 | Paxeer (80000) | ✅ Live |
 | Liquidity Oracle | 0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21 | Paxeer (80000) | ✅ Live |
-| Wallet Manager | 0x64B053035b1eB3632eA1188Dd1CaE72FC0348153 | Paxeer (80000) | ✅ Live |
-| Wallet VM Factory | 0x49E86e35B52369f0e98f14EE23fB430c89d97632 | Paxeer (80000) | ✅ Live |
-| Ecosystem Connector | 0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3 | Paxeer (80000) | ✅ Live |
+| Wallet Manager | 0x23eAcfad6C0208FB13203226162e05D85859Bc52 | Paxeer (80000) | ✅ Live |
+| Wallet VM Factory | 0xC86037276DdFD4e6565aF05B267232F72655E82e | Paxeer (80000) | ✅ Live |
+| Ecosystem Connector | 0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3 | Paxeer (80000) | ✅ Live |
 
 ### Network Information
 - **RPC Endpoint:** https://rpc-paxeer-network-djjz47ii4b.t.conduit.xyz/DgdWRnqiV7UGiMR2s9JPMqto415SW9tNG
