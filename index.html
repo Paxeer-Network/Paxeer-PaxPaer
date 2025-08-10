@@ -115,13 +115,15 @@
                 <p>The Paxeer network is engineered from the ground up to eliminate this friction through a comprehensive ecosystem approach. Our mission is to build a trustworthy crypto-trading platform that serves everyone, enabling healthy investments and increased profits through a superior user experience. We achieve this by reimagining the fundamental layers of user interaction, data provision, and smart contract wallet functionality.</p>
 
                 <h3>1.1 Network Foundation</h3>
-                <p>Paxeer operates on a dedicated Aurora Virtual Chain with the following specifications:</p>
+                <p>Paxeer operates on a dedicated L3 Beta Stack leveraging Base, Arbitrum, and Celestia with the following specifications:</p>
                 <ul>
-                    <li><strong>Chain ID</strong>: 1313161822</li>
-                    <li><strong>RPC Endpoint</strong>: <code>https://0x4e45425e.rpc.aurora-cloud.dev</code></li>
-                    <li><strong>Explorer</strong>: <code>http://0x4e45425e.explorer.aurora-cloud.dev</code></li>
-                    <li><strong>Native Currency</strong>: ETH with comprehensive sponsored gas support</li>
-                    <li><strong>Consensus</strong>: Aurora's Proof-of-Stake with enhanced finality</li>
+                    <li><strong>Chain Name</strong>: Paxeer Network</li>
+                    <li><strong>Chain ID</strong>: 80000</li>
+                    <li><strong>RPC Endpoint</strong>: <code>https://rpc-paxeer-network.app</code></li>
+                    <li><strong>Explorer</strong>: <code>paxscan.paxeer.app</code></li>
+                    <li><strong>Native Currency</strong>: PAX with comprehensive sponsored gas support</li>
+                    <li><strong>Consensus</strong>: L3 Beta Stack utilizing Base and Arbitrum security with Celestia data availability</li>
+                    <li><strong>Data Availability</strong>: Celestia modular blockchain for scalable data storage</li>
                 </ul>
 
                 <h3>1.2 Ecosystem Architecture Overview</h3>
@@ -150,7 +152,7 @@
 
                 <h4>2.1.1 WalletVMFactory Contract</h4>
                 <ul>
-                    <li><strong>Address</strong>: <code>0x49E86e35B52369f0e98f14EE23fB430c89d97632</code></li>
+                    <li><strong>Address</strong>: <code>0xC86037276DdFD4e6565aF05B267232F72655E82e</code></li>
                     <li><strong>Purpose</strong>: Deploys and manages individual Wallet VM instances</li>
                     <li><strong>Features</strong>: Feature activation, wallet creation, and lifecycle management</li>
                 </ul>
@@ -173,14 +175,14 @@
 
                 <h4>2.1.2 WalletVMImplementation Contract</h4>
                 <ul>
-                    <li><strong>Address</strong>: <code>0x080eA6E2c009A047B9D6BD0ebfa509926e485D0b</code></li>
+                    <li><strong>Address</strong>: <code>0xC5002F87e1cb8BC850660Dd4BC63Ff8ab2B5543C</code></li>
                     <li><strong>Purpose</strong>: Core logic template for all Wallet VM instances</li>
                     <li><strong>Features</strong>: Transaction execution, feature management, security controls</li>
                 </ul>
 
                 <h4>2.1.3 EcosystemConnector Contract</h4>
                 <ul>
-                    <li><strong>Address</strong>: <code>0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3</code></li>
+                    <li><strong>Address</strong>: <code>0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3</code></li>
                     <li><strong>Purpose</strong>: Bridges Wallet VMs with the broader ecosystem</li>
                     <li><strong>Features</strong>: dApp integration, cross-wallet communication, ecosystem transactions</li>
                 </ul>
@@ -237,7 +239,7 @@
 
                 <h3>3.1 Core Architecture: The PaxeerWalletManager Contract</h3>
                 <p>At the heart of the SSO system is the PaxeerWalletManager.sol smart contract, serving as the central on-chain registry and management hub for all user sessions and dApp registrations.</p>
-                <p><strong>Contract Address</strong>: <code>0x64B053035b1eB3632eA1188Dd1CaE72FC0348153</code></p>
+                <p><strong>Contract Address</strong>: <code>0x23eAcfad6C0208FB13203226162e05D85859Bc52</code></p>
 
                 <h4>3.1.1 Session Management Protocol</h4>
                 <p>The contract manages comprehensive session lifecycles through sophisticated on-chain state management:</p>
@@ -306,7 +308,7 @@
                 </div>
 
                 <h3>4.2 Transaction Oracle: Network Performance Monitoring</h3>
-                <p><strong>Contract Address</strong>: <code>0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60</code></p>
+                <p><strong>Contract Address</strong>: <code>0x59045C5C13078357A942101997970c18D3c1393b</code></p>
                 <p>The Transaction Oracle provides real-time network performance metrics essential for ecosystem optimization:</p>
 
                 <h4>4.2.1 Monitored Metrics</h4>
@@ -321,7 +323,7 @@
                 </ul>
 
                 <h3>4.3 Price Oracle: Comprehensive Market Data</h3>
-                <p><strong>Contract Address</strong>: <code>0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0</code></p>
+                <p><strong>Contract Address</strong>: <code>0xc93fF62Ef5409861E8F50Bf9312B07de85904F3b</code></p>
                 <p>The Price Oracle delivers real-time pricing and market analytics for ecosystem tokens:</p>
 
                 <h4>4.3.1 Supported Assets</h4>
@@ -333,7 +335,7 @@
                 </ul>
 
                 <h3>4.4 Liquidity Oracle: DeFi Analytics Platform</h3>
-                <p><strong>Contract Address</strong>: <code>0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21</code></p>
+                <p><strong>Contract Address</strong>: <code>0xc93fF62Ef5409861E8F50Bf9312B07de85904F3b</code></p>
                 <p>The Liquidity Oracle provides comprehensive DeFi pool monitoring and analytics:</p>
 
                 <h4>4.4.1 Comprehensive Pool Metrics</h4>
@@ -558,11 +560,11 @@ const tx = await walletVM.executeTransaction(
 // Complete SDK initialization
 const sdk = new PaxeerEcosystemSDK({
     network: 'paxeer-network',
-    chainId: 1313161822,
+    chainId: 80000,
     contracts: {
-        walletManager: '0x64B053035b1eB3632eA1188Dd1CaE72FC0348153',
-        walletVMFactory: '0x49E86e35B52369f0e98f14EE23fB430c89d97632',
-        ecosystemConnector: '0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3'
+        walletManager: '0x23eAcfad6C0208FB13203226162e05D85859Bc52',
+        walletVMFactory: '0xC86037276DdFD4e6565aF05B267232F72655E82e',
+        ecosystemConnector: '0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3'
     },
     dappId: 'my-ecosystem-app',
     autoConnect: true
@@ -860,38 +862,38 @@ GET /api/oracles/liquidity/pools    # All pool analytics</code></pre>
                         <tbody>
                             <tr>
                                 <td>Transaction Oracle</td>
-                                <td><code>0x81FeEE1C69b246Aa5b38796ecbBC11FC064a4E60</code></td>
-                                <td>Paxeer (1313161822)</td>
+                                <td><code>0x59045C5C13078357A942101997970c18D3c1393b</code></td>
+                                <td>Paxeer (80000)</td>
                                 <td><span class="status-live">✅ Live</span></td>
                             </tr>
                             <tr>
                                 <td>Price Oracle</td>
-                                <td><code>0x53ccF625b68eD5F037Ea8060aaC26156D7F9F6A0</code></td>
-                                <td>Paxeer (1313161822)</td>
+                                <td><code>0xc93fF62Ef5409861E8F50Bf9312B07de85904F3b</code></td>
+                                <td>Paxeer (80000)</td>
                                 <td><span class="status-live">✅ Live</span></td>
                             </tr>
                             <tr>
                                 <td>Liquidity Oracle</td>
-                                <td><code>0x78A6A44968B91F4a2F31fe8E7dc0755E11541D21</code></td>
-                                <td>Paxeer (1313161822)</td>
+                                <td><code>0xc93fF62Ef5409861E8F50Bf9312B07de85904F3b</code></td>
+                                <td>Paxeer (80000)</td>
                                 <td><span class="status-live">✅ Live</span></td>
                             </tr>
                             <tr>
                                 <td>Wallet Manager</td>
-                                <td><code>0x64B053035b1eB3632eA1188Dd1CaE72FC0348153</code></td>
-                                <td>Paxeer (1313161822)</td>
+                                <td><code>0x23eAcfad6C0208FB13203226162e05D85859Bc52</code></td>
+                                <td>Paxeer (80000)</td>
                                 <td><span class="status-live">✅ Live</span></td>
                             </tr>
                             <tr>
                                 <td>Wallet VM Factory</td>
-                                <td><code>0x49E86e35B52369f0e98f14EE23fB430c89d97632</code></td>
-                                <td>Paxeer (1313161822)</td>
+                                <td><code>0xC86037276DdFD4e6565aF05B267232F72655E82e</code></td>
+                                <td>Paxeer (80000)</td>
                                 <td><span class="status-live">✅ Live</span></td>
                             </tr>
                             <tr>
                                 <td>Ecosystem Connector</td>
-                                <td><code>0x4EE5560D911fB9aa8d463edcF0faB3C4F75153A3</code></td>
-                                <td>Paxeer (1313161822)</td>
+                                <td><code>0xDf8E62Be8E3fA3F4FB04Bf3089D58b2bEa16CAe3</code></td>
+                                <td>Paxeer (80000)</td>
                                 <td><span class="status-live">✅ Live</span></td>
                             </tr>
                         </tbody>
@@ -900,9 +902,9 @@ GET /api/oracles/liquidity/pools    # All pool analytics</code></pre>
 
                 <h3>Network Information</h3>
                 <ul>
-                    <li><strong>RPC Endpoint</strong>: <code>https://0x4e45425e.rpc.aurora-cloud.dev</code></li>
-                    <li><strong>Explorer</strong>: <code>http://0x4e45425e.explorer.aurora-cloud.dev</code></li>
-                    <li><strong>Chain ID</strong>: <code>1313161822</code></li>
+                    <li><strong>RPC Endpoint</strong>: <code>https://rpc-paxeer-network.app</code></li>
+                    <li><strong>Explorer</strong>: <code>https://paxscan.paxeer.app</code></li>
+                    <li><strong>Chain ID</strong>: <code>80000</code></li>
                     <li><strong>Gas Model</strong>: Sponsored transactions (gasPrice: 0)</li>
                 </ul>
             </div>
